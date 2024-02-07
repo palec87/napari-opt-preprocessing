@@ -1,0 +1,37 @@
+name: opt-preprocessing
+display_name: OPT preprocessing
+# use 'hidden' to remove plugin from napari hub search results
+visibility: public
+# see https://napari.org/stable/plugins/manifest.html for valid categories
+categories: ["Annotation", "Segmentation", "Acquisition"]
+contributions:
+  commands:
+    - id: opt-preprocessing.get_reader
+      python_name: napari_opt_preprocessing._reader:napari_get_reader
+      title: Open data with OPT preprocessing
+    - id: opt-preprocessing.make_container_widget
+      python_name: napari_opt_preprocessing:ImageThreshold
+      title: Make threshold Container widget
+    - id: opt-preprocessing.make_magic_widget
+      python_name: napari_opt_preprocessing:threshold_magic_widget
+      title: Make threshold magic widget
+    - id: opt-preprocessing.make_function_widget
+      python_name: napari_opt_preprocessing:threshold_autogenerate_widget
+      title: Make threshold function widget
+    - id: opt-preprocessing.make_qwidget
+      python_name: napari_opt_preprocessing:ExampleQWidget
+      title: Make example QWidget
+  readers:
+    - command: opt-preprocessing.get_reader
+      accepts_directories: false
+      filename_patterns: ['*.npy']
+  widgets:
+    - command: opt-preprocessing.make_container_widget
+      display_name: Container Threshold
+    - command: opt-preprocessing.make_magic_widget
+      display_name: Magic Threshold
+    - command: opt-preprocessing.make_function_widget
+      autogenerate: true
+      display_name: Autogenerate Threshold
+    - command: opt-preprocessing.make_qwidget
+      display_name: Example QWidget
